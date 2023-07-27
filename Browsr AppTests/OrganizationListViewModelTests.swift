@@ -14,7 +14,7 @@ class OrganizationListViewModelTests: XCTestCase {
     private var sut: OrganizationListViewModel!
     private var fetchOrganizationsUseCase: MockFetchOrganizationsUseCase!
     private var cancellables: Set<AnyCancellable>!
-    private let waiter = XCTWaiter()
+    private let mainWaiter = XCTWaiter()
     
     override func setUp() {
         super.setUp()
@@ -42,7 +42,7 @@ class OrganizationListViewModelTests: XCTestCase {
             result = orgs
         }.store(in: &cancellables)
         sut.getOrganizations()
-        waiter.wait(for: [expectation], timeout: 2)
+        mainWaiter.wait(for: [expectation], timeout: 2)
         XCTAssertNil(error)
         XCTAssertNotNil(result)
         XCTAssert(!result!.isEmpty)
@@ -58,7 +58,39 @@ class OrganizationListViewModelTests: XCTestCase {
             result = orgs
         }.store(in: &cancellables)
         sut.getOrganizations()
-        waiter.wait(for: [expectation], timeout: 2)
+        mainWaiter.wait(for: [expectation], timeout: 2)
         XCTAssertNotNil(result)
+    }
+    
+    func testFilter_when_hasSubset_hasTo_showValues() {
+        var superSet = [
+            Organization(id: 32, name: "Test", description: "Noooice", imageURL: "myimage"),
+            Organization(id: 12, name: "Testing", description: "Nice", imageURL: "someimage")
+        ]
+        fetchOrganizationsUseCase.result = .success(superSet)
+        
+        let expectation = XCTestExpectation(description: "fetched data")
+        sut.$organizations.sink { completion in
+            switch completion {
+            case .finished:
+                break
+            case .failure(_):
+                XCTFail()
+            }
+            expectation.fulfill()
+        } receiveValue: { _ in }.store(in: &cancellables)
+        sut.getOrganizations()
+        mainWaiter.wait(for: [expectation], timeout: 2)
+        var filteredValue: [Organization] = []
+        let expectFilter = XCTestExpectation(description: "filtered data")
+        sut.$organizations.sink { _ in
+            expectFilter.fulfill()
+        } receiveValue: { values in
+            filteredValue = values
+        }.store(in: &cancellables)
+        sut.filterCurrentItems(by: "ing")
+        let filterWaiter = XCTWaiter()
+        filterWaiter.wait(for: [expectFilter], timeout: 2)
+        XCTAssert(filteredValue.count == 1)
     }
 }

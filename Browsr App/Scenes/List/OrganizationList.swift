@@ -27,8 +27,11 @@ struct OrganizationList: View {
             }
         }
         .searchable(text: $searchText)
+        .onChange(of: searchText, perform: { newValue in
+            viewModel.filterCurrentItems(by: newValue)
+        })
         .onSubmit {
-            viewModel.filter(by: searchText)
+            viewModel.search(by: searchText)
         }
     }
 }

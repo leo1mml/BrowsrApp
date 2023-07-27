@@ -4,6 +4,7 @@ import Combine
 class OrganizationListViewModel: ObservableObject {
     @Published
     var organizations: [Organization] = []
+    var fetchedOrganizations: [Organization] = []
     @Published
     var errorMessage: String?
     private var cancellables: Set<AnyCancellable> = .init()
@@ -25,11 +26,20 @@ class OrganizationListViewModel: ObservableObject {
                 }
             } receiveValue: { [weak self] orgs in
                 self?.organizations = orgs
+                self?.fetchedOrganizations = orgs
             }.store(in: &cancellables)
     }
     
-    func filter(by text: String) {
+    func search(by text: String) {
         
+    }
+    
+    func filterCurrentItems(by term: String) {
+        if term.isEmpty {
+            organizations = fetchedOrganizations
+        } else {
+            organizations = fetchedOrganizations.filter { $0.name.contains(term.lowercased()) }
+        }
     }
     
     private func handle(_ error: Error) {
