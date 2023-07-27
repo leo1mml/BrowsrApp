@@ -13,7 +13,10 @@ class BrowsrApiFetchOrganizationUseCase: FetchOrganizationsUseCase {
         let pub = lib.getOrganizations()
             .map {
                 $0.map { org in
-                    Organization(id: org.id, name: org.login, imageURL: org.avatarURL)
+                    Organization(id: org.id,
+                                 name: org.login,
+                                 description: org.description,
+                                 imageURL: org.avatarURL)
                 }
             }.eraseToAnyPublisher()
         return pub

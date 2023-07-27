@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A147AE42A72CB7E006135E7 /* org.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A147AE32A72CB7E006135E7 /* org.png */; };
+		8A147AE72A72D2D9006135E7 /* OrganizationListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A147AE62A72D2D9006135E7 /* OrganizationListViewModelTests.swift */; };
 		8A16AD262A71BA9E0015F6D9 /* Browsr Lib in Frameworks */ = {isa = PBXBuildFile; productRef = 8A16AD252A71BA9E0015F6D9 /* Browsr Lib */; };
 		8A16AD292A71D1D80015F6D9 /* BrowserApiFetchOrganizationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A16AD282A71D1D80015F6D9 /* BrowserApiFetchOrganizationsUseCase.swift */; };
 		8A16AD2D2A71D3580015F6D9 /* FetchOrganizationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A16AD2C2A71D3580015F6D9 /* FetchOrganizationsUseCase.swift */; };
@@ -14,9 +16,6 @@
 		8A4E5F652A718BA700242AA8 /* OrganizationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5F642A718BA700242AA8 /* OrganizationList.swift */; };
 		8A4E5F672A718BA800242AA8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E5F662A718BA800242AA8 /* Assets.xcassets */; };
 		8A4E5F6A2A718BA800242AA8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E5F692A718BA800242AA8 /* Preview Assets.xcassets */; };
-		8A4E5F742A718BA800242AA8 /* Browsr_AppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5F732A718BA800242AA8 /* Browsr_AppTests.swift */; };
-		8A4E5F7E2A718BA800242AA8 /* Browsr_AppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5F7D2A718BA800242AA8 /* Browsr_AppUITests.swift */; };
-		8A4E5F802A718BA800242AA8 /* Browsr_AppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5F7F2A718BA800242AA8 /* Browsr_AppUITestsLaunchTests.swift */; };
 		8A4E5F8F2A71A53500242AA8 /* OrganizationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5F8E2A71A53500242AA8 /* OrganizationListViewModel.swift */; };
 		8A4E5F912A71A98600242AA8 /* OrganizationListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5F902A71A98600242AA8 /* OrganizationListItem.swift */; };
 /* End PBXBuildFile section */
@@ -29,16 +28,12 @@
 			remoteGlobalIDString = 8A4E5F5E2A718BA700242AA8;
 			remoteInfo = "Browsr App";
 		};
-		8A4E5F7A2A718BA800242AA8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8A4E5F572A718BA700242AA8 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8A4E5F5E2A718BA700242AA8;
-			remoteInfo = "Browsr App";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8A147AE32A72CB7E006135E7 /* org.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = org.png; sourceTree = "<group>"; };
+		8A147AE62A72D2D9006135E7 /* OrganizationListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationListViewModelTests.swift; sourceTree = "<group>"; };
+		8A147AE82A72DB5D006135E7 /* Browsr App.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Browsr App.xctestplan"; sourceTree = "<group>"; };
 		8A16AD282A71D1D80015F6D9 /* BrowserApiFetchOrganizationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserApiFetchOrganizationsUseCase.swift; sourceTree = "<group>"; };
 		8A16AD2C2A71D3580015F6D9 /* FetchOrganizationsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchOrganizationsUseCase.swift; sourceTree = "<group>"; };
 		8A4E5F5F2A718BA700242AA8 /* Browsr App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Browsr App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,10 +42,6 @@
 		8A4E5F662A718BA800242AA8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A4E5F692A718BA800242AA8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8A4E5F6F2A718BA800242AA8 /* Browsr AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Browsr AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A4E5F732A718BA800242AA8 /* Browsr_AppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browsr_AppTests.swift; sourceTree = "<group>"; };
-		8A4E5F792A718BA800242AA8 /* Browsr AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Browsr AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A4E5F7D2A718BA800242AA8 /* Browsr_AppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browsr_AppUITests.swift; sourceTree = "<group>"; };
-		8A4E5F7F2A718BA800242AA8 /* Browsr_AppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Browsr_AppUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8A4E5F8E2A71A53500242AA8 /* OrganizationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationListViewModel.swift; sourceTree = "<group>"; };
 		8A4E5F902A71A98600242AA8 /* OrganizationListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationListItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,16 +62,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8A4E5F762A718BA800242AA8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A147AE52A72CBCA006135E7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8A147AE32A72CB7E006135E7 /* org.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		8A16AD272A71D1B10015F6D9 /* UseCases */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,9 +93,9 @@
 		8A4E5F562A718BA700242AA8 = {
 			isa = PBXGroup;
 			children = (
+				8A147AE82A72DB5D006135E7 /* Browsr App.xctestplan */,
 				8A4E5F612A718BA700242AA8 /* Browsr App */,
 				8A4E5F722A718BA800242AA8 /* Browsr AppTests */,
-				8A4E5F7C2A718BA800242AA8 /* Browsr AppUITests */,
 				8A4E5F602A718BA700242AA8 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,7 +105,6 @@
 			children = (
 				8A4E5F5F2A718BA700242AA8 /* Browsr App.app */,
 				8A4E5F6F2A718BA800242AA8 /* Browsr AppTests.xctest */,
-				8A4E5F792A718BA800242AA8 /* Browsr AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -141,18 +132,10 @@
 		8A4E5F722A718BA800242AA8 /* Browsr AppTests */ = {
 			isa = PBXGroup;
 			children = (
-				8A4E5F732A718BA800242AA8 /* Browsr_AppTests.swift */,
+				8A147AE52A72CBCA006135E7 /* Resources */,
+				8A147AE62A72D2D9006135E7 /* OrganizationListViewModelTests.swift */,
 			);
 			path = "Browsr AppTests";
-			sourceTree = "<group>";
-		};
-		8A4E5F7C2A718BA800242AA8 /* Browsr AppUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8A4E5F7D2A718BA800242AA8 /* Browsr_AppUITests.swift */,
-				8A4E5F7F2A718BA800242AA8 /* Browsr_AppUITestsLaunchTests.swift */,
-			);
-			path = "Browsr AppUITests";
 			sourceTree = "<group>";
 		};
 		8A4E5F8C2A71A50A00242AA8 /* Scenes */ = {
@@ -214,24 +197,6 @@
 			productReference = 8A4E5F6F2A718BA800242AA8 /* Browsr AppTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		8A4E5F782A718BA800242AA8 /* Browsr AppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8A4E5F892A718BA800242AA8 /* Build configuration list for PBXNativeTarget "Browsr AppUITests" */;
-			buildPhases = (
-				8A4E5F752A718BA800242AA8 /* Sources */,
-				8A4E5F762A718BA800242AA8 /* Frameworks */,
-				8A4E5F772A718BA800242AA8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8A4E5F7B2A718BA800242AA8 /* PBXTargetDependency */,
-			);
-			name = "Browsr AppUITests";
-			productName = "Browsr AppUITests";
-			productReference = 8A4E5F792A718BA800242AA8 /* Browsr AppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -247,10 +212,7 @@
 					};
 					8A4E5F6E2A718BA800242AA8 = {
 						CreatedOnToolsVersion = 14.3.1;
-						TestTargetID = 8A4E5F5E2A718BA700242AA8;
-					};
-					8A4E5F782A718BA800242AA8 = {
-						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1430;
 						TestTargetID = 8A4E5F5E2A718BA700242AA8;
 					};
 				};
@@ -273,7 +235,6 @@
 			targets = (
 				8A4E5F5E2A718BA700242AA8 /* Browsr App */,
 				8A4E5F6E2A718BA800242AA8 /* Browsr AppTests */,
-				8A4E5F782A718BA800242AA8 /* Browsr AppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -292,13 +253,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8A4E5F772A718BA800242AA8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				8A147AE42A72CB7E006135E7 /* org.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -322,16 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A4E5F742A718BA800242AA8 /* Browsr_AppTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8A4E5F752A718BA800242AA8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8A4E5F7E2A718BA800242AA8 /* Browsr_AppUITests.swift in Sources */,
-				8A4E5F802A718BA800242AA8 /* Browsr_AppUITestsLaunchTests.swift in Sources */,
+				8A147AE72A72D2D9006135E7 /* OrganizationListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,11 +288,6 @@
 			isa = PBXTargetDependency;
 			target = 8A4E5F5E2A718BA700242AA8 /* Browsr App */;
 			targetProxy = 8A4E5F702A718BA800242AA8 /* PBXContainerItemProxy */;
-		};
-		8A4E5F7B2A718BA800242AA8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8A4E5F5E2A718BA700242AA8 /* Browsr App */;
-			targetProxy = 8A4E5F7A2A718BA800242AA8 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -528,6 +469,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JC4QT73C9E;
@@ -537,6 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.thryve.Browsr-AppTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Browsr App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Browsr App";
@@ -548,6 +491,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = JC4QT73C9E;
@@ -560,42 +504,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Browsr App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Browsr App";
-			};
-			name = Release;
-		};
-		8A4E5F8A2A718BA800242AA8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thryve.Browsr-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Browsr App";
-			};
-			name = Debug;
-		};
-		8A4E5F8B2A718BA800242AA8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JC4QT73C9E;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.thryve.Browsr-AppUITests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = "Browsr App";
 			};
 			name = Release;
 		};
@@ -625,15 +533,6 @@
 			buildConfigurations = (
 				8A4E5F872A718BA800242AA8 /* Debug */,
 				8A4E5F882A718BA800242AA8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8A4E5F892A718BA800242AA8 /* Build configuration list for PBXNativeTarget "Browsr AppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8A4E5F8A2A718BA800242AA8 /* Debug */,
-				8A4E5F8B2A718BA800242AA8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

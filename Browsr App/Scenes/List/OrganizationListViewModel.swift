@@ -32,5 +32,6 @@ class OrganizationListViewModel: ObservableObject {
 struct Organization {
     let id: Int
     let name: String
+    let description: String?
     let imageURL: String?
 }
