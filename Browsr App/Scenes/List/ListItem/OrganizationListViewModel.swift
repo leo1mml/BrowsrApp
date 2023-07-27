@@ -3,8 +3,8 @@ import Combine
 
 class OrganizationListViewModel: ObservableObject {
     @Published
-    var organizations: [Organization] = []
-    var fetchedOrganizations: [Organization] = []
+    var organizations: [OrganizationListItemViewModel] = []
+    var fetchedOrganizations: [OrganizationListItemViewModel] = []
     @Published
     var errorMessage: String?
     private var cancellables: Set<AnyCancellable> = .init()
@@ -52,9 +52,3 @@ class OrganizationListViewModel: ObservableObject {
     }
 }
 
-struct Organization {
-    let id: Int
-    let name: String
-    let description: String?
-    let imageURL: String?
-}

@@ -9,11 +9,11 @@ class BrowsrApiFetchOrganizationUseCase: FetchOrganizationsUseCase {
         self.lib = lib
     }
     
-    func getOrganizations() -> AnyPublisher<[Organization], Error> {
+    func getOrganizations() -> AnyPublisher<[OrganizationListItemViewModel], Error> {
         let pub = lib.getOrganizations()
             .map {
                 $0.map { org in
-                    Organization(id: org.id,
+                    OrganizationListItemViewModel(id: org.id,
                                  name: org.login,
                                  description: org.description,
                                  imageURL: org.avatarURL)

@@ -4,8 +4,8 @@ import Combine
 import XCTest
 
 class MockFetchOrganizationsUseCase: FetchOrganizationsUseCase {
-    var result: Result<[Browsr_App.Organization], Error>?
-    func getOrganizations() -> AnyPublisher<[Browsr_App.Organization], Error> {
+    var result: Result<[Browsr_App.OrganizationListItemViewModel], Error>?
+    func getOrganizations() -> AnyPublisher<[Browsr_App.OrganizationListItemViewModel], Error> {
         return result!.publisher.eraseToAnyPublisher()
     }
 }
@@ -25,10 +25,10 @@ class OrganizationListViewModelTests: XCTestCase {
     
     func testGetOrganizations_when_success_hasTo_sendData() {
         fetchOrganizationsUseCase.result = .success([
-            Organization(id: 1231, name: "Test", description: "Noice organization", imageURL: nil)
+            OrganizationListItemViewModel(id: 1231, name: "Test", description: "Noice organization", imageURL: nil)
         ])
         let expectation = XCTestExpectation(description: "receives data")
-        var result: [Organization]?
+        var result: [OrganizationListItemViewModel]?
         var error: Error?
         sut.$organizations.sink { completion in
             switch completion {
@@ -64,8 +64,8 @@ class OrganizationListViewModelTests: XCTestCase {
     
     func testFilter_when_hasSubset_hasTo_showValues() {
         var superSet = [
-            Organization(id: 32, name: "Test", description: "Noooice", imageURL: "myimage"),
-            Organization(id: 12, name: "Testing", description: "Nice", imageURL: "someimage")
+            OrganizationListItemViewModel(id: 32, name: "Test", description: "Noooice", imageURL: "myimage"),
+            OrganizationListItemViewModel(id: 12, name: "Testing", description: "Nice", imageURL: "someimage")
         ]
         fetchOrganizationsUseCase.result = .success(superSet)
         
@@ -81,7 +81,7 @@ class OrganizationListViewModelTests: XCTestCase {
         } receiveValue: { _ in }.store(in: &cancellables)
         sut.getOrganizations()
         mainWaiter.wait(for: [expectation], timeout: 2)
-        var filteredValue: [Organization] = []
+        var filteredValue: [OrganizationListItemViewModel] = []
         let expectFilter = XCTestExpectation(description: "filtered data")
         sut.$organizations.sink { _ in
             expectFilter.fulfill()

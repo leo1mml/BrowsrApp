@@ -3,7 +3,7 @@ import SwiftUI
 struct OrganizationListItem: View {
     
     @State
-    var organization: Organization
+    var organization: OrganizationListItemViewModel
     
     var body: some View {
         HStack {
@@ -30,7 +30,7 @@ struct OrganizationListItem: View {
 }
 
 struct OrganizationListItem_Previews: PreviewProvider {
-    static let organization = Organization(id: 1234, name: "Microsoft", description: "Noice company", imageURL: nil)
+    static let organization = OrganizationListItemViewModel(id: 1234, name: "Microsoft", description: "Noice company", imageURL: nil)
     static var previews: some View {
         OrganizationListItem(organization: organization)
     }
