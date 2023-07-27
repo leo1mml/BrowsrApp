@@ -10,7 +10,7 @@ class BrowserApiSearchOrganizationsUseCase: SearchOrganizationsUseCase {
         self.lib = lib
     }
     
-    func search(for term: String) -> AnyPublisher<OrganizationListItemViewModel, Error> {
+    func search(for term: String) -> AnyPublisher<[OrganizationListItemViewModel], Error> {
         return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
     }
 }

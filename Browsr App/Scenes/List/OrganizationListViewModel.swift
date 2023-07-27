@@ -9,13 +9,26 @@ class OrganizationListViewModel: ObservableObject {
     var errorMessage: String?
     private var cancellables: Set<AnyCancellable> = .init()
     private var fetchOrganizationsUseCase: FetchOrganizationsUseCase
+    private let searchOrganizationsUseCase: SearchOrganizationsUseCase
     
-    init(fetchOrganizationsUseCase: FetchOrganizationsUseCase) {
+    init(fetchOrganizationsUseCase: FetchOrganizationsUseCase,
+         searchOrganizationsUseCase: SearchOrganizationsUseCase) {
         self.fetchOrganizationsUseCase = fetchOrganizationsUseCase
+        self.searchOrganizationsUseCase = searchOrganizationsUseCase
     }
 
     func getOrganizations() {
-        fetchOrganizationsUseCase.getOrganizations()
+        let publisher = fetchOrganizationsUseCase.getOrganizations()
+        consumeOrganizationsPublisher(publisher)
+    }
+    
+    func search(by text: String) {
+        let publisher = searchOrganizationsUseCase.search(for: text)
+        consumeOrganizationsPublisher(publisher)
+    }
+    
+    private func consumeOrganizationsPublisher(_ publisher: AnyPublisher<[OrganizationListItemViewModel], Error>) {
+        publisher
             .receive(on: RunLoop.main)
             .sink { [weak self] completion in
                 switch completion {
@@ -28,10 +41,6 @@ class OrganizationListViewModel: ObservableObject {
                 self?.organizations = orgs
                 self?.fetchedOrganizations = orgs
             }.store(in: &cancellables)
-    }
-    
-    func search(by text: String) {
-        
     }
     
     func filterCurrentItems(by term: String) {

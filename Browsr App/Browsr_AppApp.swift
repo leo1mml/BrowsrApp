@@ -10,7 +10,8 @@ import SwiftUI
 @main
 struct Browsr_AppApp: App {
     private static let lib = BrowsrLib()
-    let viewModel = OrganizationListViewModel(fetchOrganizationsUseCase: BrowsrApiFetchOrganizationUseCase(lib: Self.lib))
+    let viewModel = OrganizationListViewModel(fetchOrganizationsUseCase: BrowsrApiFetchOrganizationUseCase(lib: Self.lib),
+                                              searchOrganizationsUseCase: BrowserApiSearchOrganizationsUseCase(lib: Self.lib))
     var body: some Scene {
         WindowGroup {
             TabView {

@@ -91,8 +91,8 @@
 		8A147AF02A7316BA006135E7 /* ListItem */ = {
 			isa = PBXGroup;
 			children = (
+				8A147AEE2A73168B006135E7 /* OrganizationListItemViewModel.swift */,
 				8A4E5F902A71A98600242AA8 /* OrganizationListItem.swift */,
-				8A4E5F8E2A71A53500242AA8 /* OrganizationListViewModel.swift */,
 			);
 			path = ListItem;
 			sourceTree = "<group>";
@@ -176,7 +176,7 @@
 			children = (
 				8A147AF02A7316BA006135E7 /* ListItem */,
 				8A4E5F642A718BA700242AA8 /* OrganizationList.swift */,
-				8A147AEE2A73168B006135E7 /* OrganizationListItemViewModel.swift */,
+				8A4E5F8E2A71A53500242AA8 /* OrganizationListViewModel.swift */,
 			);
 			path = List;
 			sourceTree = "<group>";

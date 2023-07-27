@@ -10,16 +10,27 @@ class MockFetchOrganizationsUseCase: FetchOrganizationsUseCase {
     }
 }
 
+class MockSearchOrganizationsUseCase: SearchOrganizationsUseCase {
+    var result: Result<[Browsr_App.OrganizationListItemViewModel], Error>?
+    
+    func search(for term: String) -> AnyPublisher<[Browsr_App.OrganizationListItemViewModel], Error> {
+        return result!.publisher.eraseToAnyPublisher()
+    }
+}
+
 class OrganizationListViewModelTests: XCTestCase {
     private var sut: OrganizationListViewModel!
     private var fetchOrganizationsUseCase: MockFetchOrganizationsUseCase!
+    private var searchOrganizationsUseCase: MockSearchOrganizationsUseCase!
     private var cancellables: Set<AnyCancellable>!
     private let mainWaiter = XCTWaiter()
     
     override func setUp() {
         super.setUp()
         fetchOrganizationsUseCase = MockFetchOrganizationsUseCase()
-        sut = OrganizationListViewModel(fetchOrganizationsUseCase: fetchOrganizationsUseCase)
+        searchOrganizationsUseCase = MockSearchOrganizationsUseCase()
+        sut = OrganizationListViewModel(fetchOrganizationsUseCase: fetchOrganizationsUseCase,
+                                        searchOrganizationsUseCase: searchOrganizationsUseCase)
         cancellables = []
     }
     
@@ -63,23 +74,8 @@ class OrganizationListViewModelTests: XCTestCase {
     }
     
     func testFilter_when_hasSubset_hasTo_showValues() {
-        var superSet = [
-            OrganizationListItemViewModel(id: 32, name: "Test", description: "Noooice", imageURL: "myimage"),
-            OrganizationListItemViewModel(id: 12, name: "Testing", description: "Nice", imageURL: "someimage")
-        ]
-        fetchOrganizationsUseCase.result = .success(superSet)
-        
         let expectation = XCTestExpectation(description: "fetched data")
-        sut.$organizations.sink { completion in
-            switch completion {
-            case .finished:
-                break
-            case .failure(_):
-                XCTFail()
-            }
-            expectation.fulfill()
-        } receiveValue: { _ in }.store(in: &cancellables)
-        sut.getOrganizations()
+        makeInitalFetch(expectation: expectation)
         mainWaiter.wait(for: [expectation], timeout: 2)
         var filteredValue: [OrganizationListItemViewModel] = []
         let expectFilter = XCTestExpectation(description: "filtered data")
@@ -92,5 +88,48 @@ class OrganizationListViewModelTests: XCTestCase {
         let filterWaiter = XCTWaiter()
         filterWaiter.wait(for: [expectFilter], timeout: 2)
         XCTAssert(filteredValue.count == 1)
+    }
+    
+    func testSearch_when_findItems_hasTo_showResults() {
+        let result = [
+            OrganizationListItemViewModel(id: 32, name: "Test", description: "Noooice", imageURL: "myimage"),
+            OrganizationListItemViewModel(id: 12, name: "Testing", description: "Nice", imageURL: "someimage")
+        ]
+        fetchOrganizationsUseCase.result = .success([])
+        searchOrganizationsUseCase.result = .success(result)
+        let searchWaiter = XCTWaiter()
+        let expectToFetchSearchItems = XCTestExpectation()
+        var results: [OrganizationListItemViewModel] = []
+        sut.$organizations.sink { _ in
+            expectToFetchSearchItems.fulfill()
+        } receiveValue: { orgs in
+            results = orgs
+        }.store(in: &cancellables)
+        sut.search(by: "ing")
+        searchWaiter.wait(for: [expectToFetchSearchItems], timeout: 2)
+        XCTAssertFalse(results.isEmpty)
+    }
+}
+
+private extension OrganizationListViewModelTests {
+    
+    func makeInitalFetch(expectation: XCTestExpectation) {
+        
+        let superSet = [
+            OrganizationListItemViewModel(id: 32, name: "Test", description: "Noooice", imageURL: "myimage"),
+            OrganizationListItemViewModel(id: 12, name: "Testing", description: "Nice", imageURL: "someimage")
+        ]
+        fetchOrganizationsUseCase.result = .success(superSet)
+        
+        sut.$organizations.sink { completion in
+            switch completion {
+            case .finished:
+                break
+            case .failure(_):
+                XCTFail()
+            }
+            expectation.fulfill()
+        } receiveValue: { _ in }.store(in: &cancellables)
+        sut.getOrganizations()
     }
 }
