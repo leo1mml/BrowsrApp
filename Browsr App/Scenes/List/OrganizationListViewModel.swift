@@ -4,6 +4,8 @@ import Combine
 class OrganizationListViewModel: ObservableObject {
     @Published
     var organizations: [Organization] = []
+    @Published
+    var errorMessage: String?
     private var cancellables: Set<AnyCancellable> = .init()
     private var fetchOrganizationsUseCase: FetchOrganizationsUseCase
     
@@ -26,7 +28,18 @@ class OrganizationListViewModel: ObservableObject {
             }.store(in: &cancellables)
     }
     
-    private func handle(_ error: Error) {}
+    func filter(by text: String) {
+        
+    }
+    
+    private func handle(_ error: Error) {
+        switch error {
+        case is URLError:
+            errorMessage = "Please try again in a moment, we're experiencing some problems"
+        default:
+            errorMessage = "Please try again later, well be back in a moment"
+        }
+    }
 }
 
 struct Organization {

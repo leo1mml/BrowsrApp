@@ -13,11 +13,22 @@ struct Browsr_AppApp: App {
     let viewModel = OrganizationListViewModel(fetchOrganizationsUseCase: BrowsrApiFetchOrganizationUseCase(lib: Self.lib))
     var body: some Scene {
         WindowGroup {
-            OrganizationList(viewModel: viewModel)
-                .background(Color.white)
-                .onAppear {
-                    viewModel.getOrganizations()
-                }
+            TabView {
+                OrganizationList(viewModel: viewModel)
+                    .onAppear {
+                        viewModel.getOrganizations()
+                    }
+                    .tabItem {
+                        Label("List", systemImage: "checklist")
+                    }
+                OrganizationList(viewModel: viewModel)
+                    .onAppear {
+                        viewModel.getOrganizations()
+                    }
+                    .tabItem {
+                        Label("Favourites", systemImage: "heart.fill")
+                    }
+            }
         }
     }
 }

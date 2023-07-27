@@ -23,7 +23,6 @@ struct OrganizationListItem: View {
                     Text("Description: \(description)")
                 }
             }
-            .foregroundColor(.black)
             .padding()
             Spacer()
         }.padding()

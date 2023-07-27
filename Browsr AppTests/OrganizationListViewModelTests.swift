@@ -25,7 +25,7 @@ class OrganizationListViewModelTests: XCTestCase {
     
     func testGetOrganizations_when_success_hasTo_sendData() {
         fetchOrganizationsUseCase.result = .success([
-            Organization(id: 1231, name: "Test", imageURL: nil)
+            Organization(id: 1231, name: "Test", description: "Noice organization", imageURL: nil)
         ])
         let expectation = XCTestExpectation(description: "receives data")
         var result: [Organization]?
@@ -46,5 +46,19 @@ class OrganizationListViewModelTests: XCTestCase {
         XCTAssertNil(error)
         XCTAssertNotNil(result)
         XCTAssert(!result!.isEmpty)
+    }
+    
+    func testGetOrganizations_when_fails_hasTo_sendError() {
+        fetchOrganizationsUseCase.result = .failure(URLError(.badServerResponse))
+        let expectation = XCTestExpectation(description: "receives error")
+        var result: String?
+        sut.$errorMessage.sink { _ in
+            expectation.fulfill()
+        } receiveValue: { orgs in
+            result = orgs
+        }.store(in: &cancellables)
+        sut.getOrganizations()
+        waiter.wait(for: [expectation], timeout: 2)
+        XCTAssertNotNil(result)
     }
 }
