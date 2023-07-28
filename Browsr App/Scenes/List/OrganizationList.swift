@@ -7,9 +7,13 @@ struct OrganizationList: View {
     @State
     var searchText: String = ""
     private var timer = Timer()
+    var showCache: Bool
+    @FetchRequest(sortDescriptors: [])
+    var localItems: FetchedResults<Org>
     
-    init(viewModel: OrganizationListViewModel, searchText: String = "", timer: Timer = Timer()) {
+    init(viewModel: OrganizationListViewModel, searchText: String = "", timer: Timer = Timer(), showCache: Bool) {
         self.viewModel = viewModel
+        self.showCache = showCache
         self.searchText = searchText
         self.timer = timer
     }
@@ -19,11 +23,18 @@ struct OrganizationList: View {
             
             ScrollView {
                 LazyVStack {
-                    ForEach(viewModel.organizations, id: \.id) {
+                    let orgs = showCache ?
+                    localItems.map { OrganizationListItemViewModel(id: $0.id.hashValue,
+                                                                   name: $0.name ?? "",
+                                                                   description: $0.desc,
+                                                                   imageURL: $0.avatarURL) }
+                    :
+                    viewModel.organizations
+                    ForEach(orgs, id: \.id) {
                         OrganizationListItem(organization: $0)
                         Divider()
                     }
-                    if viewModel.canLoadNextPage && !viewModel.organizations.isEmpty {
+                    if viewModel.canLoadNextPage && !orgs.isEmpty && !showCache {
                         ProgressView()
                             .onAppear {
                                 viewModel.getOrganizations()

@@ -4,6 +4,10 @@ struct OrganizationListItem: View {
     
     @State
     var organization: OrganizationListItemViewModel
+    @State
+    var isFavorited = false
+    @FetchRequest(sortDescriptors: [])
+    var favourites: FetchedResults<Org>
     
     var body: some View {
         HStack {
@@ -25,7 +29,27 @@ struct OrganizationListItem: View {
             }
             .padding()
             Spacer()
+            Button {
+                if let favourite = favourites.first(where: { $0.name == organization.name }) {
+                    CoreDataLocalStorage.shared.container.viewContext.delete(favourite)
+                } else {
+                    var org = Org(context: CoreDataLocalStorage.shared.container.viewContext)
+                    org.avatarURL = organization.imageURL
+                    org.desc = organization.description
+                    org.name = organization.name
+                    CoreDataLocalStorage.shared.save()
+                }
+                isFavorited.toggle()
+            } label: {
+                isFavorited ?
+                Image(systemName: "heart.fill") :
+                Image(systemName: "heart")
+            }
+
         }.padding()
+            .onAppear{
+                isFavorited = favourites.contains { $0.name == organization.name }
+            }
     }
 }
 

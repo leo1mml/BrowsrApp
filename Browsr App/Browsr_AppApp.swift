@@ -8,6 +8,8 @@ import BrowsrLib
 import SwiftUI
 @main
 struct Browsr_AppApp: App {
+    @Environment(\.scenePhase) var scenePhase
+    @StateObject private var manager: CoreDataLocalStorage = CoreDataLocalStorage.shared
     private static let lib = BrowsrLib(requestMaker: GithubRequestMaker(source: BrowsrSource(baseUrl: "api.github.com",
                                                                                              listingPath: "/organizations",
                                                                                              searchPath: "/orgs",
@@ -17,15 +19,22 @@ struct Browsr_AppApp: App {
     var body: some Scene {
         WindowGroup {
             TabView {
-                OrganizationList(viewModel: viewModel)
+                OrganizationList(viewModel: viewModel, showCache: false)
                     .tabItem {
                         Label("List", systemImage: "checklist")
                     }
-                OrganizationList(viewModel: viewModel)
+                    .environmentObject(manager)
+                    .environment(\.managedObjectContext, manager.container.viewContext)
+                OrganizationList(viewModel: viewModel, showCache: true)
                     .tabItem {
                         Label("Favourites", systemImage: "heart.fill")
                     }
+                    .environmentObject(manager)
+                    .environment(\.managedObjectContext, manager.container.viewContext)
             }
+        }
+        .onChange(of: scenePhase) { _ in
+            manager.save()
         }
     }
 }
