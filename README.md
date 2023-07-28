@@ -3,13 +3,13 @@
 List all organizations in your config
 
 ### Listing
-![List](./Images/pic3)
+![List](./Images/pic3.png)
 
 ### Save
-![List](./Images/pic2)
+![List](./Images/pic2.png)
 
 ### Search
-![List](./Images/pic1)
+![List](./Images/pic1.png)
 
 ## Tech Notes
 The architecture in this project is MVVM, I focused on making it as simple as possible.
