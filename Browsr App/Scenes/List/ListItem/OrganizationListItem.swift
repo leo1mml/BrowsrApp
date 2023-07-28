@@ -33,7 +33,7 @@ struct OrganizationListItem: View {
                 if let favourite = favourites.first(where: { $0.name == organization.name }) {
                     CoreDataLocalStorage.shared.container.viewContext.delete(favourite)
                 } else {
-                    var org = Org(context: CoreDataLocalStorage.shared.container.viewContext)
+                    let org = Org(context: CoreDataLocalStorage.shared.container.viewContext)
                     org.avatarURL = organization.imageURL
                     org.desc = organization.description
                     org.name = organization.name
