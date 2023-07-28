@@ -1,5 +1,5 @@
 import Combine
 
 protocol FetchOrganizationsUseCase {
-    func getOrganizations() -> AnyPublisher<[OrganizationListItemViewModel], Error>
+    func getOrganizations(customPath: String) -> AnyPublisher<([OrganizationListItemViewModel], String), Error>
 }

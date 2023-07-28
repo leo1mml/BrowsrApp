@@ -1,6 +1,6 @@
 import Foundation
 
-struct OrganizationListItemViewModel {
+struct OrganizationListItemViewModel: Hashable {
     let id: Int
     let name: String
     let description: String?

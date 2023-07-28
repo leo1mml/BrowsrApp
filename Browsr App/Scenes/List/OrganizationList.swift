@@ -23,14 +23,22 @@ struct OrganizationList: View {
                         OrganizationListItem(organization: $0)
                         Divider()
                     }
+                    if viewModel.canLoadNextPage && !viewModel.organizations.isEmpty {
+                        ProgressView()
+                            .onAppear {
+                                viewModel.getOrganizations()
+                            }
+                    }
                 }
+            }.onAppear {
+                viewModel.getOrganizations()
             }
         }
         .searchable(text: $searchText)
         .onChange(of: searchText, perform: { newValue in
             viewModel.filterCurrentItems(by: newValue)
         })
-        .onSubmit {
+        .onSubmit(of: .search) {
             viewModel.search(by: searchText)
         }
     }

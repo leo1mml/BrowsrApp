@@ -1,12 +1,12 @@
 {
   "pins" : [
     {
-      "identity" : "browsrlib",
+      "identity" : "browsr-lib",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/leo1mml/BrowsrLib",
+      "location" : "https://github.com/leo1mml/Browsr-Lib",
       "state" : {
         "branch" : "main",
-        "revision" : "f1a55e95802fda57f416404d71e982a8ee82b1ee"
+        "revision" : "af75b6640cfdb69dad9f0dd2c86b56efa8f973eb"
       }
     }
   ],

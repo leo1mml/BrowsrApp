@@ -4,17 +4,18 @@ import Combine
 import XCTest
 
 class MockFetchOrganizationsUseCase: FetchOrganizationsUseCase {
-    var result: Result<[Browsr_App.OrganizationListItemViewModel], Error>?
-    func getOrganizations() -> AnyPublisher<[Browsr_App.OrganizationListItemViewModel], Error> {
+    var result: Result<([Browsr_App.OrganizationListItemViewModel], String), Error>?
+
+    func getOrganizations(customPath: String) -> AnyPublisher<([Browsr_App.OrganizationListItemViewModel], String), Error> {
         return result!.publisher.eraseToAnyPublisher()
     }
 }
 
 class MockSearchOrganizationsUseCase: SearchOrganizationsUseCase {
-    var result: Result<[Browsr_App.OrganizationListItemViewModel], Error>?
+    var result: Result<Browsr_App.OrganizationListItemViewModel, Error>?
     
-    func search(for term: String) -> AnyPublisher<[Browsr_App.OrganizationListItemViewModel], Error> {
-        return result!.publisher.eraseToAnyPublisher()
+    func search(for term: String) -> AnyPublisher<OrganizationListItemViewModel, Error> {
+        result!.publisher.eraseToAnyPublisher()
     }
 }
 
@@ -35,9 +36,9 @@ class OrganizationListViewModelTests: XCTestCase {
     }
     
     func testGetOrganizations_when_success_hasTo_sendData() {
-        fetchOrganizationsUseCase.result = .success([
+        fetchOrganizationsUseCase.result = .success(([
             OrganizationListItemViewModel(id: 1231, name: "Test", description: "Noice organization", imageURL: nil)
-        ])
+        ], ""))
         let expectation = XCTestExpectation(description: "receives data")
         var result: [OrganizationListItemViewModel]?
         var error: Error?
@@ -91,11 +92,8 @@ class OrganizationListViewModelTests: XCTestCase {
     }
     
     func testSearch_when_findItems_hasTo_showResults() {
-        let result = [
-            OrganizationListItemViewModel(id: 32, name: "Test", description: "Noooice", imageURL: "myimage"),
-            OrganizationListItemViewModel(id: 12, name: "Testing", description: "Nice", imageURL: "someimage")
-        ]
-        fetchOrganizationsUseCase.result = .success([])
+        let result = OrganizationListItemViewModel(id: 12, name: "Testing", description: "Nice", imageURL: "someimage")
+        fetchOrganizationsUseCase.result = .success(([], ""))
         searchOrganizationsUseCase.result = .success(result)
         let searchWaiter = XCTWaiter()
         let expectToFetchSearchItems = XCTestExpectation()
@@ -119,7 +117,7 @@ private extension OrganizationListViewModelTests {
             OrganizationListItemViewModel(id: 32, name: "Test", description: "Noooice", imageURL: "myimage"),
             OrganizationListItemViewModel(id: 12, name: "Testing", description: "Nice", imageURL: "someimage")
         ]
-        fetchOrganizationsUseCase.result = .success(superSet)
+        fetchOrganizationsUseCase.result = .success((superSet, " "))
         
         sut.$organizations.sink { completion in
             switch completion {

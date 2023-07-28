@@ -1,4 +1,4 @@
-import Browsr_Lib
+import BrowsrLib
 import Foundation
 import Combine
 
@@ -10,7 +10,14 @@ class BrowserApiSearchOrganizationsUseCase: SearchOrganizationsUseCase {
         self.lib = lib
     }
     
-    func search(for term: String) -> AnyPublisher<[OrganizationListItemViewModel], Error> {
-        return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
+    func search(for term: String) -> AnyPublisher<OrganizationListItemViewModel, Error> {
+        lib.searchOrganization(by: term)
+            .map { org in
+                OrganizationListItemViewModel(id: org.id,
+                                              name: org.login,
+                                              description: org.description,
+                                              imageURL: org.avatarURL)
+            }
+            .eraseToAnyPublisher()
     }
 }

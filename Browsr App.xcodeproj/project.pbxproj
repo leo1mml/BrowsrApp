@@ -12,7 +12,6 @@
 		8A147AEB2A730FBA006135E7 /* SearchOrganizationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A147AEA2A730FBA006135E7 /* SearchOrganizationsUseCase.swift */; };
 		8A147AED2A7311DA006135E7 /* BrowserApiSearchOrganizationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A147AEC2A7311DA006135E7 /* BrowserApiSearchOrganizationsUseCase.swift */; };
 		8A147AEF2A73168B006135E7 /* OrganizationListItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A147AEE2A73168B006135E7 /* OrganizationListItemViewModel.swift */; };
-		8A16AD262A71BA9E0015F6D9 /* Browsr Lib in Frameworks */ = {isa = PBXBuildFile; productRef = 8A16AD252A71BA9E0015F6D9 /* Browsr Lib */; };
 		8A16AD292A71D1D80015F6D9 /* BrowserApiFetchOrganizationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A16AD282A71D1D80015F6D9 /* BrowserApiFetchOrganizationsUseCase.swift */; };
 		8A16AD2D2A71D3580015F6D9 /* FetchOrganizationsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A16AD2C2A71D3580015F6D9 /* FetchOrganizationsUseCase.swift */; };
 		8A4E5F632A718BA700242AA8 /* Browsr_AppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5F622A718BA700242AA8 /* Browsr_AppApp.swift */; };
@@ -21,6 +20,7 @@
 		8A4E5F6A2A718BA800242AA8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A4E5F692A718BA800242AA8 /* Preview Assets.xcassets */; };
 		8A4E5F8F2A71A53500242AA8 /* OrganizationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5F8E2A71A53500242AA8 /* OrganizationListViewModel.swift */; };
 		8A4E5F912A71A98600242AA8 /* OrganizationListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4E5F902A71A98600242AA8 /* OrganizationListItem.swift */; };
+		8A61F01F2A734353000FDA64 /* BrowsrLib in Frameworks */ = {isa = PBXBuildFile; productRef = 8A61F01E2A734353000FDA64 /* BrowsrLib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A16AD262A71BA9E0015F6D9 /* Browsr Lib in Frameworks */,
+				8A61F01F2A734353000FDA64 /* BrowsrLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,7 +198,7 @@
 			);
 			name = "Browsr App";
 			packageProductDependencies = (
-				8A16AD252A71BA9E0015F6D9 /* Browsr Lib */,
+				8A61F01E2A734353000FDA64 /* BrowsrLib */,
 			);
 			productName = "Browsr App";
 			productReference = 8A4E5F5F2A718BA700242AA8 /* Browsr App.app */;
@@ -252,7 +252,7 @@
 			);
 			mainGroup = 8A4E5F562A718BA700242AA8;
 			packageReferences = (
-				8A16AD242A71BA9E0015F6D9 /* XCRemoteSwiftPackageReference "BrowsrLib" */,
+				8A61F01D2A734353000FDA64 /* XCRemoteSwiftPackageReference "Browsr-Lib" */,
 			);
 			productRefGroup = 8A4E5F602A718BA700242AA8 /* Products */;
 			projectDirPath = "";
@@ -568,9 +568,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8A16AD242A71BA9E0015F6D9 /* XCRemoteSwiftPackageReference "BrowsrLib" */ = {
+		8A61F01D2A734353000FDA64 /* XCRemoteSwiftPackageReference "Browsr-Lib" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/leo1mml/BrowsrLib";
+			repositoryURL = "https://github.com/leo1mml/Browsr-Lib";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -579,10 +579,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8A16AD252A71BA9E0015F6D9 /* Browsr Lib */ = {
+		8A61F01E2A734353000FDA64 /* BrowsrLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8A16AD242A71BA9E0015F6D9 /* XCRemoteSwiftPackageReference "BrowsrLib" */;
-			productName = "Browsr Lib";
+			package = 8A61F01D2A734353000FDA64 /* XCRemoteSwiftPackageReference "Browsr-Lib" */;
+			productName = BrowsrLib;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -3,4 +3,22 @@
    uuid = "D0E27762-CA8D-4A8C-A629-CDD230492C1B"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "453050AB-AFA6-47A7-95A8-D620D4AF9CAF"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "../../../Library/Developer/Xcode/DerivedData/Browsr_App-gfsgtkqxggrkbgbouqmxinkwofwx/SourcePackages/checkouts/Browsr-Lib/Sources/BrowsrLib/BrowsrLib.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "17"
+            endingLineNumber = "17"
+            landmarkName = "getOrganizations(customPath:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
